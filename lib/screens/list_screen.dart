@@ -14,15 +14,14 @@ class RestaurantListScreen extends StatefulWidget {
 }
 
 class _RestaurantListScreenState extends State<RestaurantListScreen> {
-  final TextEditingController _filter = new TextEditingController();
-  Icon _searchIcon = new Icon(
+  final TextEditingController _filter = TextEditingController();
+  Icon _searchIcon = Icon(
     Icons.search,
     color: Colors.grey.shade700,
   );
-  Widget _appBarTitle = new Text(
+  Widget _appBarTitle = Text(
     'Restaurants App',
-    style: GoogleFonts.poppins(
-        fontWeight: FontWeight.w700, fontSize: 25, color: Colors.grey.shade700),
+    style: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: 25),
   );
   late RestaurantProvider provider;
 
@@ -82,11 +81,11 @@ class _RestaurantListScreenState extends State<RestaurantListScreen> {
           Icons.close,
           color: Colors.black,
         );
-        this._appBarTitle = new TextField(
+        this._appBarTitle = TextField(
           autofocus: true,
           controller: _filter,
-          decoration: new InputDecoration(
-              prefixIcon: new Icon(Icons.search), hintText: 'Search...'),
+          decoration: InputDecoration(
+              prefixIcon: Icon(Icons.search), hintText: 'Search...'),
           onChanged: (value) => {
             if (value != '')
               {
@@ -95,8 +94,8 @@ class _RestaurantListScreenState extends State<RestaurantListScreen> {
           },
         );
       } else {
-        this._searchIcon = new Icon(Icons.search);
-        this._appBarTitle = new Text('Restaurant Apps');
+        this._searchIcon = Icon(Icons.search);
+        this._appBarTitle = Text('Restaurant Apps');
         provider.fetchAllRestaurant();
         _filter.clear();
       }

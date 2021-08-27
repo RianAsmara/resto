@@ -38,9 +38,9 @@ class FavoritesScreen extends StatelessWidget {
         title: Text(
           favoritesTitle,
           style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w700,
-              fontSize: 25,
-              color: Colors.grey.shade700),
+            fontWeight: FontWeight.w700,
+            fontSize: 25,
+          ),
         ),
       ),
       body: _buildList(),

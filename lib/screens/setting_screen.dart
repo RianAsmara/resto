@@ -13,10 +13,7 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           settingsTitle,
-          style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w700,
-              fontSize: 25,
-              color: Colors.grey.shade700),
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: 25),
         ),
       ),
       body: _buildList(context),

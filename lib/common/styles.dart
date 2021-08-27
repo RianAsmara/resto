@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final Color primaryColor = Color(0xFFF43B86);
-final Color secondaryColor = Color(0xFF11052C);
+final Color primaryColor = Colors.white;
+final Color secondaryColor = Colors.blueAccent;
 
-final Color darkPrimaryColor = Colors.black54;
+final Color darkPrimaryColor = Colors.black;
 final Color darkSecondaryColor = Colors.lightBlueAccent;
 
 final TextTheme myTextTheme = TextTheme(

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:android_alarm_manager/android_alarm_manager.dart';
@@ -41,43 +42,42 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => RestaurantProvider(
-              apiService: ApiService(), type: 'list', id: ''),
-        ),
-        ChangeNotifierProvider(create: (_) => SchedulingProvider()),
-        ChangeNotifierProvider(
-          create: (_) => PreferencesProvider(
-            preferencesHelper: PreferencesHelper(
-              sharedPreferences: SharedPreferences.getInstance(),
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => RestaurantProvider(
+                apiService: ApiService(), type: 'list', id: ''),
+          ),
+          ChangeNotifierProvider(create: (_) => SchedulingProvider()),
+          ChangeNotifierProvider(
+            create: (_) => PreferencesProvider(
+              preferencesHelper: PreferencesHelper(
+                sharedPreferences: SharedPreferences.getInstance(),
+              ),
             ),
           ),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
-        ),
-      ],
-      child: Consumer<PreferencesProvider>(
-        builder: (context, provider, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Restaurant Apps',
-            theme: provider.themeData,
-            navigatorKey: navigatorKey,
-            initialRoute: SplashScreen.routeName,
-            routes: {
-              SplashScreen.routeName: (context) => SplashScreen(),
-              HomeScreen.routeName: (context) => HomeScreen(),
-              RestaurantDetailScreen.routeName: (context) =>
-                  RestaurantDetailScreen(
-                    restaurant: ModalRoute.of(context)?.settings.arguments
-                        as Restaurant,
-                  ),
-            },
-          );
-        },
-      ),
-    );
+          ChangeNotifierProvider(
+            create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
+          ),
+        ],
+        child: Consumer<PreferencesProvider>(
+          builder: (context, provider, child) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Restaurant Apps',
+              theme: provider.themeData,
+              navigatorKey: navigatorKey,
+              initialRoute: SplashScreen.routeName,
+              routes: {
+                SplashScreen.routeName: (context) => SplashScreen(),
+                HomeScreen.routeName: (context) => HomeScreen(),
+                RestaurantDetailScreen.routeName: (context) =>
+                    RestaurantDetailScreen(
+                      restaurant: ModalRoute.of(context)?.settings.arguments
+                          as Restaurant,
+                    ),
+              },
+            );
+          },
+        ));
   }
 }
