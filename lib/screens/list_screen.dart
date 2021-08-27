@@ -78,7 +78,7 @@ class _RestaurantListScreenState extends State<RestaurantListScreen> {
   void _searchPressed() {
     setState(() {
       if (this._searchIcon.icon == Icons.search) {
-        this._searchIcon = new Icon(
+        this._searchIcon = Icon(
           Icons.close,
           color: Colors.black,
         );
